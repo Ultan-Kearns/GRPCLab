@@ -1,0 +1,23 @@
+syntax = "proto3";
+package ie.gmit.ds;
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "ie.gmit.ds";
+
+service InventoryService {
+   rpc addItem(Item) returns (google.protobuf.BoolValue);
+   rpc getItems(google.protobuf.Empty) returns (Items);
+}
+
+message Items {
+   string itemDesc = 1;
+   repeated Item items = 2;
+}
+
+message Item {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
